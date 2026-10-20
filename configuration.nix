@@ -63,6 +63,8 @@
     openFirewall = true;
   };
 
+  services.resolved.enable = true;
+
   networking.firewall = {
     enable = true;
     trustedInterfaces = [ "tailscale0" ];
