@@ -59,7 +59,6 @@
 
   services.tailscale = {
     enable = true;
-    authKeyFile = "/etc/tailscale-authkey";
     openFirewall = true;
   };
 
