@@ -46,6 +46,10 @@
   };
 
   programs.zsh.enable = true;
+  programs.vim = {
+    enable = true;
+    defaultEditor = true;
+  };
 
   # List services that you want to enable:
 
@@ -83,7 +87,7 @@
 
   # packages + terminal support
   environment.enableAllTerminfo = true;
-  environment.systemPackages = with pkgs; [ vim git htop ];
+  environment.systemPackages = with pkgs; [ git htop ];
 
   system.stateVersion = "26.05";
   system.configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
