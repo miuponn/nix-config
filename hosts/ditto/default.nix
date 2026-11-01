@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   imports =
@@ -14,6 +14,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 20;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # on boot failure, keep booting to support headless
+  systemd.enableEmergencyMode = false;
 
   # filesystem mount options
   fileSystems."/".options = [ "compress=zstd" "noatime" ];
@@ -83,5 +86,6 @@
   environment.systemPackages = with pkgs; [ vim git htop ];
 
   system.stateVersion = "26.05";
+  system.configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
 }
 
